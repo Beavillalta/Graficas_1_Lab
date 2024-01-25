@@ -24,28 +24,30 @@ plt.scatter(matematicas, ciencias, color='blue')
 plt.title('Relación entre Calificaciones de Matemáticas y Ciencias')
 plt.xlabel('Calificaciones de Matemáticas')
 plt.ylabel('Calificaciones de Ciencias')
-plt.grid(True)
+plt.grid(False)
 plt.show()
 
-# Gráfico de barras de error
+# Gráfico de barras de error con plt.errorbar()
 materias = ['Matemáticas', 'Ciencias', 'Literatura']
 calificaciones_promedio = [np.mean(matematicas), np.mean(ciencias), np.mean(literatura)]
 errores = [errores_matematicas, errores_ciencias, errores_literatura]
 
+# Usar un solo color para todos los elementos
+color = 'skyblue'
 plt.figure(figsize=(10, 6))
-plt.bar(materias, calificaciones_promedio, yerr=errores, capsize=5, color=['blue', 'green', 'orange'])
+plt.errorbar(materias, calificaciones_promedio, yerr=np.transpose(errores), fmt='o', capsize=5, color='skyblue', label='Promedio')
 plt.title('Calificaciones Promedio con Barras de Error')
 plt.xlabel('Materias')
 plt.ylabel('Calificación Promedio')
-plt.legend(['Calificaciones Promedio'])
-plt.grid(axis='y')
+plt.legend(bbox_to_anchor=( 0.17, 1), loc='upper right', ncol=1)  # Ajustar la posición y el número de columnas
+plt.grid(False)
 plt.show()
 
 # Histograma
 plt.figure(figsize=(10, 6))
-plt.hist(matematicas, bins=10, color='skyblue', edgecolor='black')
+plt.hist(matematicas, bins=10, color='blue', edgecolor='blue')
 plt.title('Distribución de Calificaciones de Matemáticas')
 plt.xlabel('Calificaciones de Matemáticas')
 plt.ylabel('Frecuencia')
-plt.grid(axis='y')
+plt.grid(False)
 plt.show()
